@@ -1,87 +1,76 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define size 6
 #include <time.h>
-int a[size],b[size];
+int MAX_ELEMENTS =50;
 
-void mergesort(int l,int h)
+void swap(int *x, int *y)
 {
-    int mid;
-    if(l<h)
-    {
-    mid = (l+h)/2;
-
-    mergesort(l,mid);
-    mergesort(mid+1,h);
-    merge(l,mid,h);
-    }
-    else
-        return;
-
-
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
 }
-
-void merge(int l,int mid,int h)
+int choose_pivot(int i, int j)
 {
-    int i=l,j=mid+1;
-    int k=l;
-    int b[size];
 
+    return((i+j)/2);
+}
+void quicksort(int list[],int m,int n)
+{
 
-    while(i<=mid && j<=h)
+    int key,i,j,k;
+    if(m<n)
     {
-        if(a[i]<=a[j])
+        k=choose_pivot(m,n);
+        swap(&list[m], &list[k]);
+        key=list[m];
+        i=m+1;
+        j=n;
+        while(i<=j)
         {
-            b[k]=a[i++];
-
-
+            while((i<= n) && (list[i] <=key))
+                i++;
+            while((j>=m) && (list[j] > key))
+                j--;
+            if( i <j)
+                swap(&list[i], &list[j]);
         }
-        else
-            b[k]=a[j++];
-
-        k++;
+        swap(&list[m],& list[j]);
+        quicksort(list,m,j-1);
+        quicksort(list,j+1,n);
     }
-    while(i<=mid)
-    {
-        b[k]=a[i];
-        k++;
-        i++;
-    }
-    while(j<=h)
-    {
-        b[k]=a[j];
-        k++;
-        j++;
-    }
-    for(i=l; i<=h; i++)
-        a[i]=b[i];
-
 }
-
-int main()
+void printlist(int list[],int n)
 {
+
     int i;
-    int l=0,h=size-1;
-    printf("Enter the array elements : ");
-    for(i=0; i<size; i++)
+    for(i=0;i<n;i++)
+        printf("%d \t", list[i]);
+}
+int main( int argc , char *argv[])
+{
+    time_t t1,t2;
+    int list[MAX_ELEMENTS];
+
+    int j = 0, i = 0;
+    for(i=0;i<MAX_ELEMENTS;i++)
     {
-        a[i] = rand()%100;
+
+
+        list[i] = rand();
     }
+    printf("\nthe list before sorting is \n");
+    printlist(list, MAX_ELEMENTS);
+    t1= time(&t1);
+    for(i=0; i<MAX_ELEMENTS;i++)
+        for(j=0;j<MAX_ELEMENTS;j++)
+        quicksort(list,0,MAX_ELEMENTS-1);
+    t2=time(&t2);
 
-    s=clock();
-    //for (j=0;j<1000;j++)
-    for(i=0;i<10000;i++)
-    mergesort(l,h);
-    e=clock();
-
-    cpu_exe_t=(double)(e-s)/CLK_TCK;
-    printf("The array is the ")
-    for(i=0; i<size; i++)
-    {
-        printf("%d\t",a[i]);
-    }
-
-
+    printf("\nthe list after sorting using quicksort algorithm \n");
+    printlist(list,MAX_ELEMENTS);
+    printf("time taken: %f\n", (float)(t2-t1)/CLOCKS_PER_SEC);
 
     return 0;
+
 }
