@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1580788611 source:e:\gp kulam\heapify\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1580791477 source:e:\gp kulam\heaf\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

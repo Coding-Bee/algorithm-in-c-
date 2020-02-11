@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1580273570 source:e:\gp kulam\quick sort\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

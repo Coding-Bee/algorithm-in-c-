@@ -1,0 +1,108 @@
+	NAME: FARHEEN HAWALDAR.
+	USN: 2GI19IS401
+
+	TABLE Player :
+	mysql> select * from Player;
+	+-----------+------+----------+-------------+------+
+	| P_Name    | P_Id | Position | Skill_Level | T_id |
+	+-----------+------+----------+-------------+------+
+	| Shraddha  |    1 | S        | High        |  101 |
+	| Farheen   |    2 | LW       | High        |  102 |
+	| Saher     |    3 | CF       | High        |  103 |
+	| Archana   |    4 | MF       | High        |  104 |
+	| Jennifier |    5 | CH       | Medium      |  101 |
+	| Leena     |    6 | LW       | Medium      |  102 |
+	| Tina      |    7 | CF       | Low         |  103 |
+	| Gigi      |    8 | S        | High        |  104 |
+	| Carles    |    9 | RI       | High        |  104 |
+	| Canie     |   10 | GK       | Low         |  103 |
+	| Ruby      |   11 | GK       | Medium      |  102 |
+	| Bravi     |   12 | MF       | High        |  101 |
+	+-----------+------+----------+-------------+------+
+	12 rows in set (0.00 sec)
+
+	TABLE Team:
+	mysql> select * from Team;
+	+----------------+------+-------------+----------+---------+
+	| T_Name         | T_Id | City        | Captain  | Coach   |
+	+----------------+------+-------------+----------+---------+
+	| Hockey_Rockers |  101 | Banglore    | Shraddha | Smith   |
+	| Hockers        |  102 | Mumbai      | Farheen  | Jones   |
+	| Hockey_hocks   |  103 | Chennai     | Saher    | John    |
+	| Hockey_Pros    |  104 | Maharashtra | Archana  | William |
+	+----------------+------+-------------+----------+---------+
+	4 rows in set (0.00 sec)
+
+	TABLE Injury:
+	mysql> select * from Injury;
+	+------+------+------------+-------------+
+	| I_id | P_id | I_Date     | Description |
+	+------+------+------------+-------------+
+	|  100 |    1 | 2020-02-20 | SS          |
+	|  200 |    2 | 2020-02-10 | LW          |
+	|  300 |    3 | 2020-02-10 | CF          |
+	|  400 |    4 | 2020-01-30 | MF          |
+	|  500 |    5 | 2020-01-10 | CH          |
+	+------+------+------------+-------------+
+	5 rows in set (0.00 sec)
+
+	TABLE Game:
+	mysql> select * from Game;
+	+------+--------------+---------------+------+-------------+------------+
+	| G_Id | Host_Team_Id | Guest_Team_Id | Date | Guest_Score | Host_Score |
+	+------+--------------+---------------+------+-------------+------------+
+	| 1001 |          101 |           104 |   10 |          20 |         22 |
+	| 1002 |          103 |           101 |   11 |          26 |         25 |
+	| 1003 |          102 |           103 |   13 |          23 |         21 |
+	| 1004 |          101 |           104 |   17 |          25 |         24 |
+	+------+--------------+---------------+------+-------------+------------+
+	4 rows in set (0.00 sec)
+
+	Query 1: Display The details of player whose Id is 3
+	mysql> select * from Player where P_Id=3;
+	+--------+------+----------+-------------+------+
+	| P_Name | P_Id | Position | Skill_Level | T_id |
+	+--------+------+----------+-------------+------+
+	| Saher  |    3 | CF       | High        |  103 |
+	+--------+------+----------+-------------+------+
+	1 row in set (0.00 sec)
+
+
+	Query 2: Display the details of player whose name is 'Shraddha'
+	mysql> select * from Player where P_Name='Shraddha';
+	+----------+------+----------+-------------+------+
+	| P_Name   | P_Id | Position | Skill_Level | T_id |
+	+----------+------+----------+-------------+------+
+	| Shraddha |    1 | S        | High        |  101 |
+	+----------+------+----------+-------------+------+
+	1 row in set (0.00 sec)
+
+
+	Query 3: Display the list of the games which where played on 10
+	mysql> select * from Game where Date=10;
+	+------+--------------+---------------+------+-------------+------------+
+	| G_Id | Host_Team_Id | Guest_Team_Id | Date | Guest_Score | Host_Score |
+	+------+--------------+---------------+------+-------------+------------+
+	| 1001 |          101 |           104 |   10 |          20 |         22 |
+	+------+--------------+---------------+------+-------------+------------+
+	1 row in set (0.00 sec)
+
+	Query 4: Display list of all games where team One has performed better
+
+	mysql> select * from Game where Guest_Score > Host_Score;
+	+------+--------------+---------------+------+-------------+------------+
+	| G_Id | Host_Team_Id | Guest_Team_Id | Date | Guest_Score | Host_Score |
+	+------+--------------+---------------+------+-------------+------------+
+	| 1002 |          103 |           101 |   11 |          26 |         25 |
+	| 1003 |          102 |           103 |   13 |          23 |         21 |
+	| 1004 |          101 |           104 |   17 |          25 |         24 |
+	+------+--------------+---------------+------+-------------+------------+
+	3 rows in set (0.00 sec)
+
+	mysql> select * from Game where Guest_Team_Id=101 and Guest_Score > Host_Score;
+	+------+--------------+---------------+------+-------------+------------+
+	| G_Id | Host_Team_Id | Guest_Team_Id | Date | Guest_Score | Host_Score |
+	+------+--------------+---------------+------+-------------+------------+
+	| 1002 |          103 |           101 |   11 |          26 |         25 |
+	+------+--------------+---------------+------+-------------+------------+
+	1 row in set (0.00 sec)

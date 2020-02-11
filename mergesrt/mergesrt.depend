@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1579579725 source:e:\gp kulam\mergesrt\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

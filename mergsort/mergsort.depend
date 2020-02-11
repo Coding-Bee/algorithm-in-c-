@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1579671509 source:e:\gp kulam\mergsort\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

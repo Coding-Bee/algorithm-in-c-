@@ -1,0 +1,91 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#define Max_elements 500
+
+void swap(int *x, int *y)
+{
+    int temp;
+    temp =*x;
+    *x = *y;
+    *y = temp;
+
+}
+
+int choose_pivot(int i, int j)
+{
+
+        return((i+j)/2);
+}
+void quicksort(int list[],int m, int n)
+{
+
+    int key, i,j,k;
+    if(m<n)
+    {
+        k = choose_pivot(m,n);
+        swap(&list[m],&list[k]);
+        key=list[m];
+        i=m+1;
+        j=n;
+        while(i<=j)
+        {
+            while((i<=n)&&(list[i]<=key))
+                i++;
+            while((j>=m)&&(list[j]>key))
+                j--;
+            if(i<j)
+                swap(&list[i], &list[j]);
+        }
+        swap(&list[m], &list[j]);
+        quicksort(list, m, j-1);
+        quicksort(list, j+1,n);
+    }
+}
+void printlist(int list[], int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+        printf("%d\t", list[i]);
+}
+int main ()
+{
+
+    int list[Max_elements];
+    int n,i,j;
+    int low,high;
+    clock_t s,e;
+    double cpu_exe_t;
+    printf("Enter the size of array:");
+     scanf("%d",&n);
+     for(i=0;i<n;i++)
+     {
+      list[i]=rand()%100;
+     }
+    printf("The array elements are:");
+    for(i=0;i<n;i++)
+    {
+
+        printf("%d\t",list[i]);
+    }
+    s=clock();
+     for(j=0;j<1000;j++)
+        for(i=0;i<1000;i++)
+     {
+
+         low=0;
+         high=n-1;
+         quicksort(list,low,high);
+     }
+
+    e=clock();
+    cpu_exe_t=(double)(e-s)/CLK_TCK;
+    printf("\n The sorted array is:\n");
+    for(i=0;i<n;i++)
+    {
+
+        printf("%d\t",list[i]);
+    }
+    printf("CPU EXECUTION TIME IS %lf",cpu_exe_t);
+    return 0;
+}

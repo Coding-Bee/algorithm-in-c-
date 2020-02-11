@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1580875519 source:e:\gp kulam\insertionsort\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

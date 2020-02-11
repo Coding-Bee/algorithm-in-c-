@@ -1,0 +1,21 @@
+
+ enter the number of nodes:6
+
+ enter the adjacency matrix:
+0 3 999 999 6 5
+999 0 1 999 999 4
+999 1 0 6 999 4
+999 999 6 0 8 5
+6 999 999 8 0 2
+5 4 4 5 2 0
+
+
+ edge 1:(1 2) cost:3
+ edge 2:(2 3) cost:1
+ edge 3:(2 6) cost:4
+ edge 4:(6 5) cost:2
+ edge 5:(6 4) cost:5
+ Minimum Cost=15
+Process returned 0 (0x0)   execution time : 5.389 s
+Press any key to continue.
+
